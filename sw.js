@@ -1,6 +1,6 @@
 // Offline cache: the whole app is stored on the device after the first visit.
 // Bump VERSION whenever the app files change so devices fetch the new copy.
-const VERSION = 'chemlab-v2';
+const VERSION = 'chemlab-v3';
 const FILES = [
   "./",
   "index.html",
@@ -35,9 +35,10 @@ self.addEventListener('activate', (e) => {
 
 // Network first (so updates arrive), falling back to the cached copy when offline.
 self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
+  if (e.request.method !== 'GET' || !e.request.url.startsWith(self.location.origin)) return;
   e.respondWith(
-    fetch(e.request).then((res) => {
+    // no-cache: always ask the server whether the file changed (avoids a 10-minute stale copy)
+    fetch(e.request.url, { cache: 'no-cache' }).then((res) => {
       const copy = res.clone();
       caches.open(VERSION).then((c) => c.put(e.request, copy));
       return res;
