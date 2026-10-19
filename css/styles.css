@@ -275,3 +275,4 @@ body { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui, sa
   .stats div { min-width: 0; flex: 1; padding: 8px 10px; }
   .anim-inner { padding: 6px; }
 }
+.get-app { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 12px; }

@@ -80,6 +80,11 @@ function renderHome() {
     <div class="stats"><div><b>${TOPICS.length}</b><small>topics</small></div><div><b>${done}</b><small>quizzes done</small></div><div><b>${avg}%</b><small>average score</small></div><div><b>${PAPERS.length}</b><small>practice papers</small></div></div>
     <div class="how"><span><b>1</b> Read & play with the animations</span><span><b>2</b> Take the topic quiz</span><span><b>3</b> Try an exam paper</span></div>
     <p class="dim small">Sections marked <span class="ext">Extended</span> are Supplement content (Papers 2 & 4). Core students can skip them.</p>`;
+  // On the website (not inside the Windows app), offer the Windows download.
+  if (!navigator.userAgent.includes('Electron')) {
+    hero.append(el('div', { class: 'get-app', html: `<a class="btn" href="https://github.com/njabuloshong1/chemlab/releases/latest/download/ChemLab-IGCSE-Setup.exe">⬇ Download for Windows</a>
+      <span class="dim small">iPad / Chromebook / phone: use <b>Share → Add to Home Screen</b> or the <b>install icon</b> in the address bar.</span>` }));
+  }
   main.append(hero);
   const tools = el('div', { class: 'cards tools' });
   for (const [h, ic, title, txt] of [['journey', '🔭', 'Journey into the Atom', 'Start here: zoom from a copper wire into a single atom and take it apart.'], ['bondlab', '⚛', 'Bond Lab', 'Click any two elements and watch how they bond — formula, name and equation.'], ['ptable', '🗂️', 'Periodic Table', 'All 118 elements with atoms, electrons, ions and trends.'], ['ions', '🧩', 'Ions & Formulae', 'Sulfate, nitrate, ammonium… what they are, tests, and a formula builder.']]) {
