@@ -36,7 +36,8 @@ function route() {
   renderNav(view, id);
   if (view === 'topic') return renderTopic(TOPICS.find((t) => t.id === id) || TOPICS[0], tab || 'learn');
   if (view === 'papers') return renderPapers();
-  if (view === 'paper') return renderPaper(PAPERS.find((p) => p.id === id));
+  if (view === 'paper') { const p = PAPERS.find((x) => x.id === id); return p.type === 'guide' ? renderGuide(p) : renderPaper(p); }
+  if (view === 'print') return renderPrint(PAPERS.find((x) => x.id === id), tab === 'answers');
   if (view === 'review') return renderReview();
   if (view === 'bondlab') return renderBondLab(id);
   if (view === 'ptable') return renderPeriodicPage();
@@ -253,22 +254,93 @@ function renderPapers() {
   head.innerHTML = `<h1>📝 Exam Practice</h1><p>Exam-style papers written for this app in the style of Cambridge IGCSE 0620, with model answers and mark schemes. Do them under timed conditions, then mark yourself.</p>
     <div class="note">Real Cambridge past papers and mark schemes are copyright Cambridge University Press &amp; Assessment, so they are not copied here. Your school (via the School Support Hub) or the Cambridge website is the place to get them — use them alongside these practice papers.</div>`;
   main.append(head);
-  const grid = el('div', { class: 'cards' });
-  for (const p of PAPERS) {
-    const marks = p.type === 'mcq' ? p.questions.length : p.questions.reduce((s, q) => s + q.parts.reduce((a, b) => a + b.marks, 0), 0);
-    const best = prog.papers[p.id];
-    const c = el('a', { class: 'card', href: '#paper/' + p.id });
-    c.innerHTML = `<div class="ic">${p.type === 'mcq' ? '🔘' : '✍️'}</div><div class="meta">${p.style} · ${p.time} min · ${marks} marks</div><h3>${p.title}</h3><p>${p.desc}</p>
-      <div class="bar"><i style="width:${best || 0}%"></i></div><small>${best != null ? 'Best ' + best + '%' : 'Not attempted'}</small>`;
-    grid.append(c);
+  const groups = [...new Set(PAPERS.map((p) => p.group || 'Full practice papers'))];
+  // test-prep groups first, then the full papers
+  groups.sort((a, b) => (a.startsWith('Test prep') ? 0 : a === 'Real past papers' ? 1 : 2) - (b.startsWith('Test prep') ? 0 : b === 'Real past papers' ? 1 : 2));
+  for (const g of groups) {
+    main.append(el('h2', { class: 'sect' }, g));
+    const grid = el('div', { class: 'cards' });
+    for (const p of PAPERS.filter((x) => (x.group || 'Full practice papers') === g)) {
+      const best = prog.papers[p.id];
+      const c = el('a', { class: 'card', href: '#paper/' + p.id });
+      if (p.type === 'guide') {
+        const n = p.sections.reduce((s, x) => s + x.items.length, 0);
+        c.innerHTML = `<div class="ic">📑</div><div class="meta">${p.style} · ${n} answers</div><h3>${p.title}</h3><p>${p.desc}</p>`;
+      } else {
+        const marks = p.type === 'mcq' ? p.questions.length : p.questions.reduce((s, q) => s + q.parts.reduce((a, b) => a + b.marks, 0), 0);
+        c.innerHTML = `<div class="ic">${p.type === 'mcq' ? '🔘' : '✍️'}</div><div class="meta">${p.style} · ${p.time} min · ${marks} marks</div><h3>${p.title}</h3><p>${p.desc}</p>
+          <div class="bar"><i style="width:${best || 0}%"></i></div><small>${best != null ? 'Best ' + best + '%' : 'Not attempted'}</small>`;
+      }
+      grid.append(c);
+    }
+    main.append(grid);
   }
-  main.append(grid);
+}
+
+// Answer guide for real past papers: question number, answer and explanation.
+function renderGuide(p) {
+  main.innerHTML = '';
+  const head = el('header', { class: 'topic-head' });
+  head.innerHTML = `<div class="crumb"><a href="#papers">← Exam Practice</a></div><h1>📑 ${p.title}</h1><p>${p.desc}</p>
+    <div class="note">The question papers are copyright Cambridge University Press &amp; Assessment, so only question numbers are listed. The answers and explanations are written for this app.</div>`;
+  head.append(el('div', { class: 'next' }, el('a', { class: 'btn ghost', href: `#print/${p.id}/answers` }, '🖨 Print this guide')));
+  main.append(head);
+  const body = el('div', { class: 'topic-body' });
+  for (const s of p.sections) {
+    const sec = el('section', { class: 'lesson' });
+    sec.innerHTML = `<h2>${s.h}</h2><table class="tbl guide"><tr><th>Question</th><th>Topic</th><th>Answer</th><th>Explanation</th></tr>${s.items.map(([q, t, a, e]) => `<tr><td><b>${q}</b></td><td>${t}</td><td><details><summary>Show</summary><b>${a}</b></details></td><td><details><summary>Show</summary>${e}</details></td></tr>`).join('')}</table>`;
+    body.append(sec);
+  }
+  main.append(body);
+}
+
+// Printable version of a paper, with or without answers.
+function renderPrint(p, withAnswers) {
+  main.innerHTML = '';
+  document.body.classList.add('printing');
+  cleanups.push(() => document.body.classList.remove('printing'));
+  const bar = el('div', { class: 'print-bar' },
+    el('a', { class: 'btn ghost', href: '#paper/' + p.id }, '← Back'),
+    el('button', { class: 'btn', onclick: () => window.print() }, '🖨 Print / Save as PDF'),
+    el('a', { class: 'btn ghost', href: `#print/${p.id}/${withAnswers ? 'questions' : 'answers'}` }, withAnswers ? 'Questions only' : 'With answers'));
+  const doc = el('div', { class: 'print-doc' });
+  let html = `<h1>${p.title}</h1><p class="sub">ChemLab IGCSE Chemistry · ${p.style}${p.time ? ' · ' + p.time + ' minutes' : ''}</p>`;
+  if (p.type === 'guide') {
+    for (const s of p.sections) html += `<h2>${s.h}</h2><table><tr><th>Q</th><th>Answer</th><th>Explanation</th></tr>${s.items.map(([q, , a, e]) => `<tr><td><b>${q}</b></td><td>${a}</td><td>${e}</td></tr>`).join('')}</table>`;
+  } else if (p.type === 'mcq') {
+    html += '<p class="sub">Name: ______________________ &nbsp; Score: ____ / ' + p.questions.length + '</p>';
+    p.questions.forEach((q, i) => { html += `<div class="pq"><b>${i + 1}.</b> ${q.q}<ol type="A">${q.o.map((o) => `<li>${o}</li>`).join('')}</ol></div>`; });
+    if (withAnswers) {
+      html += '<h2 class="pb">Answers and explanations</h2>';
+      p.questions.forEach((q, i) => { html += `<div class="pa"><b>${i + 1}. ${'ABCD'[q.a]}</b> — ${q.e}</div>`; });
+    }
+  } else {
+    const total = p.questions.reduce((s, q) => s + q.parts.reduce((a, b) => a + b.marks, 0), 0);
+    html += `<p class="sub">Name: ______________________ &nbsp; Total: ____ / ${total}</p>`;
+    for (const q of p.questions) {
+      html += `<div class="pq"><h3>Question ${q.n}</h3><div>${q.stem}</div>`;
+      for (const pt of q.parts) html += `<div class="ppart"><b>${pt.p}</b> ${pt.q} <span class="mk">[${pt.marks}]</span>${'<div class="line"></div>'.repeat(Math.min(6, pt.marks + 1))}</div>`;
+      html += '</div>';
+    }
+    if (withAnswers) {
+      html += '<h2 class="pb">Mark scheme</h2>';
+      for (const q of p.questions) {
+        html += `<h3>Question ${q.n}</h3>`;
+        for (const pt of q.parts) html += `<div class="pa"><b>${pt.p}</b> [${pt.marks}] ${pt.answer}<br><span class="dim">Marking points: ${pt.points.map((x) => '✓ ' + x).join(' &nbsp; ')}</span></div>`;
+      }
+    }
+  }
+  doc.innerHTML = html;
+  main.append(bar, doc);
 }
 
 function renderPaper(p) {
   main.innerHTML = '';
   const head = el('header', { class: 'topic-head' });
   head.innerHTML = `<div class="crumb"><a href="#papers">← Exam Practice</a></div><h1>${p.title}</h1><p>${p.desc}</p>`;
+  head.append(el('div', { class: 'next' },
+    el('a', { class: 'btn ghost', href: `#print/${p.id}/questions` }, '🖨 Print questions'),
+    el('a', { class: 'btn ghost', href: `#print/${p.id}/answers` }, '🖨 Print with answers')));
   const timer = el('div', { class: 'timer' });
   head.append(timer);
   main.append(head);
