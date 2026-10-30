@@ -1,6 +1,6 @@
 // Offline cache: the whole app is stored on the device after the first visit.
 // Bump VERSION whenever the app files change so devices fetch the new copy.
-const VERSION = 'chemlab-v4';
+const VERSION = 'chemlab-v5';
 const FILES = [
   "./",
   "index.html",
@@ -17,6 +17,8 @@ const FILES = [
   "js/examples.js",
   "js/papers.js",
   "js/testprep.js",
+  "js/testprep2.js",
+  "js/testprep3.js",
   "js/tools.js",
   "js/ui.js",
   "build/icon.png",

@@ -1,0 +1,212 @@
+'use strict';
+// Test-prep papers for the remaining topics (part 1). Original exam-style questions with solutions.
+// Compact format: mcq(q, [options], answerIndex, explanation); part(label, question, marks, answer, [points]).
+
+const mcq = (q, o, a, e) => ({ q, o, a, e });
+const part = (p, q, marks, answer, points) => ({ p, q, marks, answer, points });
+
+const TESTPREP2 = [
+// ---------------- States of matter ----------------
+{ id: 'tp-states-mcq', group: 'Test prep: States of matter', title: 'States of Matter — Multiple Choice', type: 'mcq', time: 15, style: 'Paper 1/2 style',
+  desc: 'Particle model, changes of state, heating curves, gas pressure and diffusion.',
+  questions: [
+    mcq('Which describes the particles in a solid?', ['far apart, random, moving quickly', 'close together, random, sliding past each other', 'close together, regular, vibrating about fixed positions', 'far apart, regular, vibrating'], 2, 'Solid particles are packed closely in a regular arrangement and only vibrate about fixed positions.'),
+    mcq('What is the name of the change from liquid to gas at the surface of a liquid, below its boiling point?', ['boiling', 'condensing', 'evaporating', 'melting'], 2, 'Evaporation happens only at the surface, at any temperature. Boiling happens throughout the liquid at the boiling point.'),
+    mcq('Substance X melts at −39 °C and boils at 357 °C. What is its state at 25 °C?', ['solid', 'liquid', 'gas', 'liquid and gas'], 1, '25 °C is between the melting and boiling points, so X is a liquid (it is mercury).'),
+    mcq('On a heating curve, why does the temperature stay constant while a solid melts?', ['The particles stop moving.', 'Energy is used to overcome forces of attraction between particles.', 'Heat is lost to the surroundings.', 'The particles get smaller.'], 1, 'The energy supplied breaks the forces holding particles in fixed positions instead of raising their kinetic energy.'),
+    mcq('Which change shows that a gas is being compressed?', ['volume increases, pressure decreases', 'volume decreases, pressure increases', 'volume and pressure both decrease', 'volume and pressure both increase'], 1, 'Squeezing a gas into a smaller volume makes the particles hit the walls more often, so the pressure increases.'),
+    mcq('Why does a balloon shrink when it is placed in a freezer?', ['The gas particles get smaller.', 'The gas particles move more slowly and hit the walls less often.', 'Some gas particles are destroyed.', 'The gas turns into a solid.'], 1, 'Cooling lowers the kinetic energy of the particles; with fewer, gentler collisions the gas contracts.'),
+    mcq('A purple crystal of potassium manganate(VII) is placed in water. After some time all the water is purple. What process is this?', ['condensation', 'diffusion', 'distillation', 'evaporation'], 1, 'Diffusion: random movement of particles from high to low concentration.'),
+    mcq('Which pair of gases would diffuse at the most similar rates?', ['H₂ (2) and O₂ (32)', 'N₂ (28) and CO (28)', 'CH₄ (16) and Cl₂ (71)', 'He (4) and CO₂ (44)'], 1, 'Gases with the same Mᵣ diffuse at the same rate at the same temperature. N₂ and CO both have Mᵣ = 28.'),
+    mcq('Which statement explains why diffusion is faster in a gas than in a liquid?', ['Gas particles are larger.', 'Gas particles move faster and are further apart.', 'Liquid particles do not move.', 'Gas particles attract each other more strongly.'], 1, 'In a gas the particles move faster and there is more space between them, so they spread out more quickly.'),
+    mcq('What happens to the particles when steam condenses to water?', ['They gain energy and move further apart.', 'They lose energy and move closer together.', 'They gain energy and move closer together.', 'They lose energy and move further apart.'], 1, 'Condensing releases energy; the particles slow down and come close together as forces of attraction form.'),
+    mcq('Which statement about a liquid is correct?', ['It has a fixed shape.', 'It can be compressed easily.', 'It has a fixed volume but takes the shape of its container.', 'Its particles are far apart.'], 2, 'Liquids have a fixed volume and flow to take the shape of the container; particles are close, so they are hard to compress.'),
+    mcq('Ammonia (Mᵣ 17) and hydrogen chloride (Mᵣ 36.5) are released at opposite ends of a 100 cm tube. Where does the white ring form?', ['at the ammonia end', 'about 40 cm from the ammonia end', 'in the middle', 'about 60 cm from the ammonia end'], 3, 'Ammonia diffuses faster, so it travels further: the ring forms nearer the HCl end, about 60 cm from the ammonia end.'),
+  ] },
+{ id: 'tp-states-theory', group: 'Test prep: States of matter', title: 'States of Matter — Structured', type: 'structured', time: 20, style: 'Paper 3/4 style',
+  desc: 'Heating curves, kinetic particle theory and diffusion explained in exam answers.',
+  questions: [
+    { n: 1, stem: 'A solid is heated at a constant rate. Its temperature is measured every minute. The temperature rises, stays at 80 °C for 4 minutes, then rises again.',
+      parts: [
+        part('(a)', 'State the melting point of the substance.', 1, '<b>80 °C</b> (the temperature of the flat section).', ['80 °C']),
+        part('(b)', 'Explain, in terms of particles, why the temperature stays constant at 80 °C.', 2, 'The energy is used to <b>overcome the forces of attraction</b> between particles (to melt the solid), <b>not to increase their kinetic energy</b>.', ['energy overcomes forces of attraction', 'kinetic energy / temperature does not increase']),
+        part('(c)', 'Describe the arrangement and motion of the particles before and after melting.', 4, 'Before (solid): <b>close together, regular arrangement</b>, <b>vibrate about fixed positions</b>. After (liquid): <b>close together, random arrangement</b>, <b>move/slide past each other</b>.', ['solid: regular, close', 'solid: vibrate only', 'liquid: random, close', 'liquid: move past each other']),
+        part('(d)', 'Suggest how the heating curve would show the substance was impure.', 1, 'It would melt over a <b>range of temperatures</b> (sloping, not flat) and <b>below 80 °C</b>.', ['melts over a range / lower']),
+      ] },
+    { n: 2, stem: 'A sealed container holds a fixed mass of gas.',
+      parts: [
+        part('(a)', 'Explain why the gas exerts a pressure on the walls of the container.', 2, 'The gas particles are <b>moving randomly</b> and <b>collide with the walls</b>.', ['particles move', 'collide with walls']),
+        part('(b)', 'The container is heated. Explain the change in pressure.', 3, 'Particles gain <b>kinetic energy</b> / move <b>faster</b>, collide with the walls <b>more often</b> and <b>harder</b> → pressure <b>increases</b>.', ['faster particles', 'more frequent / harder collisions', 'pressure increases']),
+        part('(c)', 'Extended: Explain why bromine vapour diffuses more slowly than nitrogen at the same temperature.', 2, 'Bromine (Br₂, Mᵣ 160) has a <b>higher Mᵣ</b> than nitrogen (28), so its molecules <b>move more slowly</b>.', ['higher Mᵣ', 'molecules move more slowly']),
+      ] },
+  ] },
+// ---------------- Atoms, elements, compounds ----------------
+{ id: 'tp-atoms-mcq', group: 'Test prep: Atoms & isotopes', title: 'Atoms, Isotopes & Electrons — Multiple Choice', type: 'mcq', time: 15, style: 'Paper 1/2 style',
+  desc: 'Protons, neutrons, electrons, configurations, isotopes and relative atomic mass.',
+  questions: [
+    mcq('What is the relative charge and relative mass of a neutron?', ['charge +1, mass 1', 'charge 0, mass 1', 'charge −1, mass 1/1836', 'charge 0, mass 1/1836'], 1, 'Neutrons are neutral (0) with a relative mass of 1, like protons.'),
+    mcq('An atom has mass number 39 and proton number 19. How many neutrons does it have?', ['19', '20', '39', '58'], 1, 'Neutrons = mass number − proton number = 39 − 19 = 20 (potassium-39).'),
+    mcq('What is the electronic configuration of aluminium (proton number 13)?', ['2,8,3', '2,11', '2,3,8', '8,5'], 0, '2 in the first shell, 8 in the second, 3 in the third.'),
+    mcq('An element has the configuration 2,8,6. In which group and period is it?', ['Group VI, Period 3', 'Group III, Period 6', 'Group VI, Period 2', 'Group VIII, Period 3'], 0, '6 outer electrons → Group VI; 3 shells → Period 3. It is sulfur.'),
+    mcq('Which statement about isotopes of an element is correct?', ['They have different numbers of protons.', 'They have different chemical properties.', 'They have different numbers of neutrons.', 'They have different numbers of electrons.'], 2, 'Isotopes have the same protons and electrons but different neutrons, so they react in the same way.'),
+    mcq('How many electrons are in a ³²₁₆S²⁻ ion?', ['14', '16', '18', '32'], 2, 'The atom has 16 electrons; the 2− charge means 2 extra → 18.'),
+    mcq('Chlorine is 75% chlorine-35 and 25% chlorine-37. What is its relative atomic mass?', ['35.0', '35.5', '36.0', '36.5'], 1, '(35 × 75 + 37 × 25) ÷ 100 = 35.5.'),
+    mcq('Which substance is a compound?', ['air', 'oxygen', 'sea water', 'water'], 3, 'Water (H₂O) has two elements chemically combined. Air and sea water are mixtures; oxygen is an element.'),
+    mcq('Which particles are found in the nucleus of an atom?', ['protons and electrons', 'protons and neutrons', 'neutrons and electrons', 'protons, neutrons and electrons'], 1, 'The nucleus contains protons and neutrons; electrons are in shells around it.'),
+    mcq('Which particle has the same electronic configuration as an argon atom?', ['Na⁺', 'O²⁻', 'Ca²⁺', 'F⁻'], 2, 'Ca (2,8,8,2) loses 2 → Ca²⁺ = 2,8,8 like argon. Na⁺, O²⁻ and F⁻ are 2,8 like neon.'),
+    mcq('Why are noble gases unreactive?', ['They are gases.', 'They have a full outer shell of electrons.', 'They have no neutrons.', 'They are diatomic.'], 1, 'With a full outer shell they do not need to lose, gain or share electrons.'),
+    mcq('Element X has isotopes ¹⁰X (20%) and ¹¹X (80%). What is the Aᵣ of X?', ['10.2', '10.5', '10.8', '11.0'], 2, '(10 × 20 + 11 × 80) ÷ 100 = 10.8 (boron).'),
+  ] },
+{ id: 'tp-atoms-theory', group: 'Test prep: Atoms & isotopes', title: 'Atoms & Isotopes — Structured', type: 'structured', time: 20, style: 'Paper 3/4 style',
+  desc: 'Completing particle tables, configurations and Aᵣ calculations.',
+  questions: [
+    { n: 1, stem: 'Complete the information for each particle.<table class="tbl"><tr><th>particle</th><th>protons</th><th>neutrons</th><th>electrons</th></tr><tr><td>²³₁₁Na</td><td>?</td><td>?</td><td>?</td></tr><tr><td>¹⁹₉F⁻</td><td>?</td><td>?</td><td>?</td></tr><tr><td>⁴⁰₂₀Ca²⁺</td><td>?</td><td>?</td><td>?</td></tr></table>',
+      parts: [
+        part('(a)', 'Complete the row for ²³₁₁Na.', 1, '<b>11 protons, 12 neutrons, 11 electrons</b>.', ['11, 12, 11']),
+        part('(b)', 'Complete the row for ¹⁹₉F⁻.', 1, '<b>9 protons, 10 neutrons, 10 electrons</b> (gained 1).', ['9, 10, 10']),
+        part('(c)', 'Complete the row for ⁴⁰₂₀Ca²⁺.', 1, '<b>20 protons, 20 neutrons, 18 electrons</b> (lost 2).', ['20, 20, 18']),
+        part('(d)', 'Write the electronic configuration of the calcium ion.', 1, '<b>2,8,8</b>', ['2,8,8']),
+      ] },
+    { n: 2, stem: 'Magnesium has three isotopes: ²⁴Mg (79%), ²⁵Mg (10%) and ²⁶Mg (11%).',
+      parts: [
+        part('(a)', 'State what is meant by isotopes.', 2, 'Atoms of the <b>same element</b> with the <b>same number of protons</b> but <b>different numbers of neutrons</b>.', ['same element / same protons', 'different neutrons']),
+        part('(b)', 'Extended: Calculate the relative atomic mass of magnesium to 1 decimal place.', 2, '(24 × 79 + 25 × 10 + 26 × 11) ÷ 100 = (1896 + 250 + 286) ÷ 100 = <b>24.3</b>', ['correct working', '24.3']),
+        part('(c)', 'Extended: Explain why all three isotopes have the same chemical properties.', 2, 'They have the <b>same number of electrons</b> / the <b>same electronic configuration</b> (2,8,2), and reactions involve electrons.', ['same electrons / configuration', 'reactions depend on electrons']),
+      ] },
+  ] },
+// ---------------- Stoichiometry ----------------
+{ id: 'tp-moles-mcq', group: 'Test prep: Formulae, equations & moles', title: 'Stoichiometry & Moles — Multiple Choice', type: 'mcq', time: 20, style: 'Paper 1/2 style',
+  desc: 'Formulae, equations, Mᵣ, moles, gas volumes, concentration and yields.',
+  questions: [
+    mcq('What is the Mᵣ of sulfuric acid, H₂SO₄? (H = 1, S = 32, O = 16)', ['49', '96', '98', '100'], 2, '2 × 1 + 32 + 4 × 16 = 98.'),
+    mcq('Which equation is balanced?', ['Mg + HCl → MgCl₂ + H₂', 'Mg + 2HCl → MgCl₂ + H₂', 'Mg + 2HCl → MgCl₂ + 2H₂', '2Mg + HCl → MgCl₂ + H₂'], 1, 'Left: 1 Mg, 2 H, 2 Cl. Right: 1 Mg, 2 Cl, 2 H.'),
+    mcq('What does the state symbol (aq) mean?', ['a pure liquid', 'dissolved in water', 'a gas', 'an acid'], 1, '(aq) = aqueous solution.'),
+    mcq('Extended: How many moles are in 4.0 g of sodium hydroxide, NaOH? (Na = 23, O = 16, H = 1)', ['0.10', '0.40', '1.0', '10'], 0, 'Mᵣ = 40; 4.0 ÷ 40 = 0.10 mol.'),
+    mcq('Extended: What volume is occupied by 0.25 mol of oxygen gas at r.t.p.?', ['0.25 dm³', '6.0 dm³', '12 dm³', '24 dm³'], 1, '0.25 × 24 = 6.0 dm³.'),
+    mcq('Extended: 50.0 cm³ of solution contains 0.010 mol of solute. What is the concentration?', ['0.0005 mol/dm³', '0.20 mol/dm³', '0.50 mol/dm³', '5.0 mol/dm³'], 1, '50.0 cm³ = 0.0500 dm³; 0.010 ÷ 0.0500 = 0.20 mol/dm³.'),
+    mcq('What is the empirical formula of C₂H₆?', ['CH₂', 'CH₃', 'C₂H₆', 'CH₆'], 1, 'Divide by 2: CH₃.'),
+    mcq('Extended: How many atoms are in 1 mole of water molecules?', ['6.02 × 10²³', '1.20 × 10²⁴', '1.81 × 10²⁴', '3 atoms'], 2, 'Each H₂O has 3 atoms: 3 × 6.02 × 10²³ = 1.81 × 10²⁴.'),
+    mcq('12 g of carbon burns to make 44 g of carbon dioxide. What mass of CO₂ is made from 6 g of carbon?', ['6 g', '11 g', '22 g', '44 g'], 2, 'Half the carbon → half the product: 22 g.'),
+    mcq('Extended: A reaction should make 25 g of product but makes 20 g. What is the percentage yield?', ['20%', '25%', '80%', '125%'], 2, '20 ÷ 25 × 100 = 80%.'),
+    mcq('What is the formula of calcium nitrate?', ['CaNO₃', 'Ca(NO₃)₂', 'Ca₂NO₃', 'Ca(NO₂)₂'], 1, 'Ca²⁺ needs two NO₃⁻ ions → Ca(NO₃)₂.'),
+    mcq('Extended: Which ionic equation shows a precipitation reaction?', ['H⁺ + OH⁻ → H₂O', 'Ba²⁺ + SO₄²⁻ → BaSO₄', 'Zn + Cu²⁺ → Zn²⁺ + Cu', '2Cl⁻ → Cl₂ + 2e⁻'], 1, 'BaSO₄ is an insoluble solid formed from two ions in solution.'),
+  ] },
+{ id: 'tp-moles-theory', group: 'Test prep: Formulae, equations & moles', title: 'Stoichiometry & Moles — Structured', type: 'structured', time: 30, style: 'Paper 4 style',
+  desc: 'Reacting masses, gas volumes, titrations, empirical formulae and percentage yield.',
+  questions: [
+    { n: 1, stem: 'Calcium carbonate reacts with hydrochloric acid: CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂. (Ca = 40, C = 12, O = 16, Cl = 35.5)',
+      parts: [
+        part('(a)', 'Calculate the Mᵣ of calcium carbonate.', 1, '40 + 12 + 3 × 16 = <b>100</b>', ['100']),
+        part('(b)', '5.00 g of CaCO₃ reacts completely. Calculate the volume of CO₂ produced at r.t.p.', 3, 'n(CaCO₃) = 5.00 ÷ 100 = <b>0.0500 mol</b> → 0.0500 mol CO₂ (1 : 1) → 0.0500 × 24 = <b>1.20 dm³</b>', ['0.0500 mol', '1 : 1 ratio', '1.20 dm³']),
+        part('(c)', 'Calculate the mass of calcium chloride formed.', 2, 'Mᵣ CaCl₂ = 40 + 71 = 111; 0.0500 × 111 = <b>5.55 g</b>', ['Mᵣ 111', '5.55 g']),
+        part('(d)', 'The actual mass of calcium chloride obtained was 4.44 g. Calculate the percentage yield.', 1, '4.44 ÷ 5.55 × 100 = <b>80%</b>', ['80%']),
+      ] },
+    { n: 2, stem: '25.0 cm³ of sodium hydroxide solution is titrated with 0.100 mol/dm³ sulfuric acid. 20.0 cm³ of acid is needed. 2NaOH + H₂SO₄ → Na₂SO₄ + 2H₂O',
+      parts: [
+        part('(a)', 'Calculate the moles of sulfuric acid used.', 1, '0.100 × 20.0 ÷ 1000 = <b>0.00200 mol</b>', ['0.00200 mol']),
+        part('(b)', 'Calculate the moles of sodium hydroxide in 25.0 cm³.', 1, 'Ratio 2 : 1 → <b>0.00400 mol</b>', ['0.00400 mol']),
+        part('(c)', 'Calculate the concentration of the sodium hydroxide in mol/dm³ and g/dm³.', 3, '0.00400 ÷ 0.0250 = <b>0.160 mol/dm³</b>; × 40 = <b>6.40 g/dm³</b>', ['divide by 0.0250 dm³', '0.160 mol/dm³', '6.40 g/dm³']),
+      ] },
+    { n: 3, stem: 'A hydrocarbon contains 85.7% carbon and 14.3% hydrogen by mass. Its Mᵣ is 56.',
+      parts: [
+        part('(a)', 'Calculate the empirical formula.', 3, 'C: 85.7 ÷ 12 = 7.14; H: 14.3 ÷ 1 = 14.3 → ratio 1 : 2 → <b>CH₂</b>', ['divide by Aᵣ', 'simplest ratio', 'CH₂']),
+        part('(b)', 'Determine the molecular formula.', 1, 'Mᵣ(CH₂) = 14; 56 ÷ 14 = 4 → <b>C₄H₈</b>', ['C₄H₈']),
+      ] },
+  ] },
+// ---------------- Electrochemistry ----------------
+{ id: 'tp-electro-mcq', group: 'Test prep: Electrolysis & fuel cells', title: 'Electrochemistry — Multiple Choice', type: 'mcq', time: 15, style: 'Paper 1/2 style',
+  desc: 'Electrodes, products of electrolysis, half-equations, electroplating and fuel cells.',
+  questions: [
+    mcq('Which is the definition of electrolysis?', ['Using electricity to make a solution', 'The decomposition of an ionic compound, molten or in aqueous solution, by an electric current', 'The movement of electrons through a metal', 'A reaction that produces electricity'], 1, 'Electrolysis breaks down an ionic compound when molten or dissolved, using an electric current.'),
+    mcq('What is the anode?', ['the negative electrode', 'the positive electrode', 'the electrolyte', 'the power supply'], 1, 'Anode = positive (PANIC: Positive Anode, Negative Is Cathode).'),
+    mcq('Molten potassium iodide is electrolysed. What forms at the cathode?', ['iodine', 'hydrogen', 'oxygen', 'potassium'], 3, 'In a molten binary compound the metal forms at the cathode.'),
+    mcq('Concentrated aqueous sodium chloride is electrolysed. What forms at each electrode?', ['cathode: sodium; anode: chlorine', 'cathode: hydrogen; anode: chlorine', 'cathode: hydrogen; anode: oxygen', 'cathode: chlorine; anode: hydrogen'], 1, 'Sodium is more reactive than hydrogen, so H₂ forms at the cathode; concentrated Cl⁻ gives Cl₂ at the anode.'),
+    mcq('Dilute sulfuric acid is electrolysed with inert electrodes. Which gases form?', ['hydrogen at the cathode, oxygen at the anode', 'oxygen at the cathode, hydrogen at the anode', 'hydrogen at both electrodes', 'sulfur dioxide at the anode'], 0, 'H⁺ → H₂ at the cathode; OH⁻ → O₂ at the anode.'),
+    mcq('Extended: Which half-equation shows the reaction at the anode when molten lead(II) bromide is electrolysed?', ['Pb²⁺ + 2e⁻ → Pb', '2Br⁻ → Br₂ + 2e⁻', 'Br₂ + 2e⁻ → 2Br⁻', 'Pb → Pb²⁺ + 2e⁻'], 1, 'Bromide ions lose electrons (oxidation) at the anode.'),
+    mcq('Extended: Aqueous copper(II) sulfate is electrolysed with carbon electrodes. What happens to the blue colour?', ['It gets darker.', 'It fades.', 'It stays the same.', 'It turns green.'], 1, 'Cu²⁺ ions are removed (deposited as copper), so the blue colour fades.'),
+    mcq('Why is a metal object electroplated?', ['to make it heavier', 'to improve its appearance and resistance to corrosion', 'to make it conduct', 'to make it magnetic'], 1, 'Electroplating improves appearance and protects against corrosion.'),
+    mcq('In electroplating a spoon with silver, which electrode is the spoon?', ['anode', 'cathode', 'either electrode', 'neither — it is the electrolyte'], 1, 'Ag⁺ ions are attracted to the negative cathode and deposit on the spoon.'),
+    mcq('What is the only chemical product of a hydrogen–oxygen fuel cell?', ['carbon dioxide', 'hydrogen peroxide', 'water', 'nitrogen'], 2, '2H₂ + O₂ → 2H₂O.'),
+    mcq('Extended: Which is a disadvantage of hydrogen fuel cells compared with petrol engines?', ['They produce carbon dioxide.', 'Hydrogen is difficult to store.', 'They are less efficient.', 'They produce toxic gases.'], 1, 'Hydrogen is a flammable gas that must be stored under high pressure; there are also few refuelling stations.'),
+    mcq('Extended: During electrolysis, how does charge move through the electrolyte?', ['as electrons', 'as ions', 'as atoms', 'as protons only'], 1, 'Ions carry the charge through the electrolyte; electrons flow in the external circuit.'),
+  ] },
+{ id: 'tp-electro-theory', group: 'Test prep: Electrolysis & fuel cells', title: 'Electrochemistry — Structured', type: 'structured', time: 20, style: 'Paper 3/4 style',
+  desc: 'Predicting products, observations and half-equations.',
+  questions: [
+    { n: 1, stem: 'Molten zinc chloride, ZnCl₂, is electrolysed using inert electrodes.',
+      parts: [
+        part('(a)', 'Explain why the zinc chloride must be molten.', 1, 'So the <b>ions can move</b> (they are fixed in the solid).', ['ions free to move']),
+        part('(b)', 'Name the products at the anode and cathode.', 2, 'Anode: <b>chlorine</b>. Cathode: <b>zinc</b>.', ['chlorine at anode', 'zinc at cathode']),
+        part('(c)', 'Extended: Write the half-equations at each electrode and say which is oxidation.', 3, 'Cathode: <b>Zn²⁺ + 2e⁻ → Zn</b> (reduction). Anode: <b>2Cl⁻ → Cl₂ + 2e⁻</b> (<b>oxidation</b> — loss of electrons).', ['cathode equation', 'anode equation', 'anode = oxidation']),
+      ] },
+    { n: 2, stem: 'Concentrated aqueous sodium chloride (brine) is electrolysed.',
+      parts: [
+        part('(a)', 'Name the product at the cathode and give a test for it.', 2, '<b>Hydrogen</b>: a lighted splint gives a <b>squeaky pop</b>.', ['hydrogen', 'squeaky pop']),
+        part('(b)', 'Name the product at the anode and give a test for it.', 2, '<b>Chlorine</b>: <b>bleaches damp litmus paper</b>.', ['chlorine', 'bleaches damp litmus']),
+        part('(c)', 'Name the solution left at the end.', 1, '<b>Sodium hydroxide</b> solution.', ['sodium hydroxide']),
+        part('(d)', 'Extended: Explain why sodium is not produced at the cathode.', 1, 'Sodium is <b>more reactive than hydrogen</b>, so H⁺ ions are discharged instead.', ['Na more reactive than H']),
+      ] },
+  ] },
+// ---------------- Energetics ----------------
+{ id: 'tp-energy-mcq', group: 'Test prep: Energy changes', title: 'Energy Changes — Multiple Choice', type: 'mcq', time: 12, style: 'Paper 1/2 style',
+  desc: 'Exothermic and endothermic reactions, pathway diagrams and bond energies.',
+  questions: [
+    mcq('During a reaction the temperature of the mixture falls. The reaction is…', ['exothermic', 'endothermic', 'a combustion', 'a neutralisation'], 1, 'Energy is taken in from the surroundings → endothermic.'),
+    mcq('Which process is exothermic?', ['thermal decomposition of calcium carbonate', 'photosynthesis', 'burning methane', 'dissolving ammonium nitrate in water'], 2, 'Combustion releases energy.'),
+    mcq('Extended: For an exothermic reaction, ΔH is…', ['positive', 'negative', 'zero', 'equal to Eₐ'], 1, 'Energy is lost to the surroundings, so ΔH is negative.'),
+    mcq('Extended: What is activation energy?', ['the energy released by a reaction', 'the minimum energy colliding particles need to react', 'the energy of the products', 'the energy needed to melt the reactants'], 1, 'Eₐ is the minimum energy for a successful collision.'),
+    mcq('Extended: Bond breaking is…', ['exothermic', 'endothermic', 'neither', 'always faster than bond making'], 1, 'Energy must be supplied to break bonds.'),
+    mcq('On a pathway diagram for an endothermic reaction, the products are…', ['lower than the reactants', 'higher than the reactants', 'level with the reactants', 'below the axis'], 1, 'Products have more energy than reactants.'),
+    mcq('Extended: Energy to break bonds = 1500 kJ/mol; energy released making bonds = 1800 kJ/mol. ΔH = ?', ['+300 kJ/mol', '−300 kJ/mol', '+3300 kJ/mol', '−3300 kJ/mol'], 1, 'ΔH = 1500 − 1800 = −300 kJ/mol.'),
+    mcq('Extended: What effect does a catalyst have on a pathway diagram?', ['It lowers ΔH.', 'It lowers the activation energy.', 'It raises the products.', 'It makes the reaction exothermic.'], 1, 'A catalyst gives an alternative route with lower Eₐ; ΔH is unchanged.'),
+    mcq('Extended: H₂ + Cl₂ → 2HCl. Bond energies: H–H 436, Cl–Cl 242, H–Cl 431 kJ/mol. What is ΔH?', ['+247 kJ/mol', '−184 kJ/mol', '−431 kJ/mol', '+184 kJ/mol'], 1, 'Break 436 + 242 = 678; make 2 × 431 = 862; ΔH = 678 − 862 = −184 kJ/mol.'),
+    mcq('Which is an example of an endothermic process used in everyday life?', ['a hand warmer', 'an instant cold pack', 'a burning candle', 'a self-heating can'], 1, 'Cold packs dissolve a salt endothermically, taking in heat.'),
+  ] },
+{ id: 'tp-energy-theory', group: 'Test prep: Energy changes', title: 'Energy Changes — Structured', type: 'structured', time: 15, style: 'Paper 4 style',
+  desc: 'Pathway diagrams and bond-energy calculations.',
+  questions: [
+    { n: 1, stem: 'Methane burns in oxygen: CH₄ + 2O₂ → CO₂ + 2H₂O. Bond energies in kJ/mol: C–H 413, O=O 498, C=O 805, O–H 464.',
+      parts: [
+        part('(a)', 'Calculate the energy needed to break all the bonds in the reactants.', 1, '4 × 413 + 2 × 498 = <b>2648 kJ</b>', ['2648']),
+        part('(b)', 'Calculate the energy released when the bonds in the products form.', 1, '2 × 805 + 4 × 464 = <b>3466 kJ</b>', ['3466']),
+        part('(c)', 'Calculate ΔH and state whether the reaction is exothermic or endothermic.', 2, '2648 − 3466 = <b>−818 kJ/mol</b> → <b>exothermic</b>', ['−818 kJ/mol', 'exothermic']),
+        part('(d)', 'Describe the reaction pathway diagram, including Eₐ and ΔH.', 3, 'Products drawn <b>lower</b> than reactants; curve rises to a peak; <b>Eₐ</b> = arrow from reactants up to the peak; <b>ΔH</b> = arrow from reactants down to products.', ['products lower', 'Eₐ labelled reactants → peak', 'ΔH labelled reactants → products']),
+      ] },
+  ] },
+// ---------------- Rates, equilibrium, redox ----------------
+{ id: 'tp-rates-mcq', group: 'Test prep: Rates, equilibrium & redox', title: 'Rates, Equilibrium & Redox — Multiple Choice', type: 'mcq', time: 20, style: 'Paper 1/2 style',
+  desc: 'Collision theory, rate graphs, reversible reactions, Haber and Contact processes, redox.',
+  questions: [
+    mcq('Which change would increase the rate of reaction between zinc granules and acid?', ['using larger lumps of zinc', 'cooling the acid', 'using zinc powder', 'diluting the acid'], 2, 'Powder has a larger surface area → more frequent collisions.'),
+    mcq('Extended: Why does increasing the temperature increase the rate?', ['The activation energy decreases.', 'Particles move faster and more collisions have energy ≥ Eₐ.', 'More particles are made.', 'The particles get bigger.'], 1, 'Faster particles collide more often, and a greater proportion of collisions are successful.'),
+    mcq('What is a catalyst?', ['a substance used up to speed up a reaction', 'a substance that increases the rate and is unchanged at the end', 'a substance that slows a reaction down', 'a reactant in excess'], 1, 'Catalysts speed up reactions and are not used up.'),
+    mcq('A graph of gas volume against time levels off. Why?', ['The catalyst is used up.', 'One reactant has been used up.', 'The temperature has fallen.', 'The gas has escaped.'], 1, 'The reaction stops when a reactant runs out.'),
+    mcq('What colour change happens when water is added to anhydrous copper(II) sulfate?', ['blue to white', 'white to blue', 'pink to blue', 'blue to pink'], 1, 'Anhydrous (white) + water → hydrated (blue). This is reversible.'),
+    mcq('Extended: At dynamic equilibrium in a closed system…', ['the reaction has stopped', 'the rates of the forward and reverse reactions are equal', 'all the reactants have reacted', 'the concentrations keep changing'], 1, 'Both reactions continue at the same rate, so concentrations stay constant.'),
+    mcq('Extended: What are the conditions for the Haber process?', ['450 °C, 2 atm, vanadium(V) oxide', '450 °C, 200 atm, iron', '300 °C, 60 atm, phosphoric acid', '25 °C, 1 atm, nickel'], 1, 'Haber: 450 °C, 200 atm, iron catalyst.'),
+    mcq('Extended: In 2SO₂ + O₂ ⇌ 2SO₃ (forward reaction exothermic), which change increases the yield of SO₃?', ['increasing the temperature', 'decreasing the pressure', 'increasing the pressure', 'adding a catalyst'], 2, 'Higher pressure favours the side with fewer gas molecules (3 → 2). A catalyst does not change the yield.'),
+    mcq('In CuO + H₂ → Cu + H₂O, which substance is oxidised?', ['CuO', 'H₂', 'Cu', 'H₂O'], 1, 'Hydrogen gains oxygen → oxidised. CuO loses oxygen → reduced.'),
+    mcq('Extended: What is the oxidation number of manganese in KMnO₄?', ['+2', '+4', '+7', '−1'], 2, 'K (+1) + Mn + 4(−2) = 0 → Mn = +7.'),
+    mcq('Extended: Which colour change shows that an oxidising agent is present when added to potassium iodide?', ['purple to colourless', 'colourless to brown', 'orange to green', 'blue to white'], 1, 'Iodide is oxidised to iodine, which is brown.'),
+    mcq('Extended: In Zn + Cu²⁺ → Zn²⁺ + Cu, what is the reducing agent?', ['Zn', 'Cu²⁺', 'Zn²⁺', 'Cu'], 0, 'Zinc loses electrons (is oxidised), so it reduces Cu²⁺ — it is the reducing agent.'),
+  ] },
+{ id: 'tp-rates-theory', group: 'Test prep: Rates, equilibrium & redox', title: 'Rates, Equilibrium & Redox — Structured', type: 'structured', time: 25, style: 'Paper 3/4 style',
+  desc: 'Rate experiments, collision theory explanations and equilibrium predictions.',
+  questions: [
+    { n: 1, stem: 'Magnesium ribbon reacts with excess dilute hydrochloric acid. The volume of hydrogen is measured every 10 s.',
+      parts: [
+        part('(a)', 'Name the apparatus used to measure the volume of gas.', 1, '<b>Gas syringe</b>.', ['gas syringe']),
+        part('(b)', 'The experiment is repeated at a higher temperature. Explain, using collision theory, why the rate increases.', 3, 'Particles have <b>more kinetic energy</b>, so there are <b>more frequent collisions</b>, and a <b>greater proportion of collisions have energy ≥ Eₐ</b>.', ['more kinetic energy', 'more frequent collisions', 'more collisions ≥ Eₐ']),
+        part('(c)', 'State and explain how the final volume of hydrogen would change if the same mass of magnesium powder were used.', 2, 'The final volume is <b>the same</b> — the same mass (moles) of the limiting reactant (magnesium) is used. Only the rate increases.', ['same final volume', 'same amount of limiting reactant']),
+      ] },
+    { n: 2, stem: 'Extended: Ammonia is made by the Haber process. N₂(g) + 3H₂(g) ⇌ 2NH₃(g). The forward reaction is exothermic.',
+      parts: [
+        part('(a)', 'State the sources of nitrogen and hydrogen.', 2, 'Nitrogen from <b>air</b>; hydrogen from <b>methane</b> (natural gas).', ['air', 'methane']),
+        part('(b)', 'Explain why a high pressure increases the yield of ammonia.', 2, 'There are <b>fewer gas molecules</b> on the right (2) than the left (4), so higher pressure <b>shifts equilibrium to the right</b>.', ['fewer gas molecules on right', 'equilibrium shifts right']),
+        part('(c)', 'Explain why 450 °C is used even though a lower temperature gives a higher yield.', 2, 'A lower temperature makes the rate <b>too slow</b>; 450 °C is a <b>compromise</b> between rate and yield.', ['low temperature too slow', 'compromise between rate and yield']),
+        part('(d)', 'State the effect of the iron catalyst on the position of equilibrium.', 1, '<b>No effect</b> — it only makes equilibrium reached faster.', ['no effect']),
+      ] },
+  ] },
+];
+
+PAPERS.push(...TESTPREP2);
