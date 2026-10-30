@@ -6,8 +6,7 @@ An interactive app for **Cambridge IGCSE Chemistry (0620, 2026–2028 syllabus)*
 
 | Device | How |
 |---|---|
-| **Windows (recommended)** | [⬇ Download ChemLab-IGCSE-Setup.exe](https://github.com/njabuloshong1/chemlab/releases/latest/download/ChemLab-IGCSE-Setup.exe). Installs with desktop and Start-menu shortcuts. No admin rights needed. |
-| **Windows (no install)** | [⬇ Download ChemLab-IGCSE-Portable.exe](https://github.com/njabuloshong1/chemlab/releases/latest/download/ChemLab-IGCSE-Portable.exe). Double-click to run, e.g. from a USB stick. |
+| **Windows** | [⬇ Download ChemLab-IGCSE-Setup.exe](https://github.com/njabuloshong1/chemlab/releases/latest/download/ChemLab-IGCSE-Setup.exe). Installs with desktop and Start-menu shortcuts. No admin rights needed. |
 | **iPad / iPhone** | Open **https://njabuloshong1.github.io/chemlab/** in Safari, then tap Share → **Add to Home Screen** |
 | **Chromebook / Android / Mac** | Open **https://njabuloshong1.github.io/chemlab/** in Chrome, then click the **install icon** in the address bar |
 
