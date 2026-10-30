@@ -37,6 +37,7 @@ function route() {
   if (view === 'topic') return renderTopic(TOPICS.find((t) => t.id === id) || TOPICS[0], tab || 'learn');
   if (view === 'papers') return renderPapers();
   if (view === 'paper') { const p = PAPERS.find((x) => x.id === id); return p.type === 'guide' ? renderGuide(p) : renderPaper(p); }
+  if (view === 'answers') return renderAnswers(PAPERS.find((x) => x.id === id));
   if (view === 'print') return renderPrint(PAPERS.find((x) => x.id === id), tab === 'answers');
   if (view === 'review') return renderReview();
   if (view === 'bondlab') return renderBondLab(id);
@@ -294,6 +295,33 @@ function renderGuide(p) {
   main.append(body);
 }
 
+// Every question with its answer and explanation, inside the app.
+function renderAnswers(p) {
+  main.innerHTML = '';
+  const head = el('header', { class: 'topic-head' });
+  head.innerHTML = `<div class="crumb"><a href="#paper/${p.id}">← Back to the paper</a> · <a href="#papers">Exam Practice</a></div><h1>📖 Answers: ${p.title}</h1><p>Every question with the correct answer and a full explanation. Try the paper first, then check here.</p>`;
+  head.append(el('div', { class: 'next' }, el('a', { class: 'btn', href: '#paper/' + p.id }, '✍️ Try the paper'), el('a', { class: 'btn ghost', href: `#print/${p.id}/answers` }, '🖨 Print with answers')));
+  main.append(head);
+  const body = el('div', { class: 'topic-body' });
+  if (p.type === 'mcq') {
+    p.questions.forEach((q, i) => {
+      const s = el('section', { class: 'lesson ans' });
+      s.innerHTML = `<h3>${i + 1}. ${q.q}</h3><ol type="A" class="ans-opts">${q.o.map((o, k) => `<li class="${k === q.a ? 'right' : ''}">${o}${k === q.a ? ' ✔' : ''}</li>`).join('')}</ol>
+        <div class="explain ok"><b>Answer: ${'ABCD'[q.a]}.</b> ${q.e}</div>`;
+      body.append(s);
+    });
+  } else {
+    for (const q of p.questions) {
+      const s = el('section', { class: 'lesson ans' });
+      s.innerHTML = `<h2>Question ${q.n}</h2><div class="stem">${q.stem}</div>` + q.parts.map((pt) => `
+        <div class="part"><div class="pq"><b>${pt.p}</b> ${pt.q} <span class="marks">[${pt.marks}]</span></div>
+        <div class="answer"><div class="model"><b>Answer:</b> ${pt.answer}</div><div class="ms"><b>Mark scheme:</b> ${pt.points.map((x) => '✓ ' + x).join(' &nbsp; ')}</div></div></div>`).join('');
+      body.append(s);
+    }
+  }
+  main.append(body);
+}
+
 // Printable version of a paper, with or without answers.
 function renderPrint(p, withAnswers) {
   main.innerHTML = '';
@@ -339,6 +367,7 @@ function renderPaper(p) {
   const head = el('header', { class: 'topic-head' });
   head.innerHTML = `<div class="crumb"><a href="#papers">← Exam Practice</a></div><h1>${p.title}</h1><p>${p.desc}</p>`;
   head.append(el('div', { class: 'next' },
+    el('a', { class: 'btn', href: `#answers/${p.id}` }, '📖 Show all answers'),
     el('a', { class: 'btn ghost', href: `#print/${p.id}/questions` }, '🖨 Print questions'),
     el('a', { class: 'btn ghost', href: `#print/${p.id}/answers` }, '🖨 Print with answers')));
   const timer = el('div', { class: 'timer' });

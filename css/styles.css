@@ -303,3 +303,7 @@ body { font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, system-ui, sa
   .print-doc { max-width: none; padding: 0; border-radius: 0; }
   .print-doc .pb { break-before: page; }
 }
+.lesson.ans h3 { margin: 0 0 8px; font-size: 16px; line-height: 1.45; }
+.ans-opts { margin: 0 0 6px 20px; padding: 0; }
+.ans-opts li { padding: 2px 0; color: #cbd5e1; }
+.ans-opts li.right { color: var(--good); font-weight: 700; }
