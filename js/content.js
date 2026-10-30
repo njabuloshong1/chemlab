@@ -125,6 +125,24 @@ const TOPICS = [
     { h: 'Simple molecular substances', html: `
       <ul><li><b>Low melting and boiling points</b> — ${EXT} only weak <b>intermolecular forces</b> between molecules need to be overcome (the covalent bonds inside the molecules do <b>not</b> break).</li>
       <li><b>Poor electrical conductivity</b> — no ions or free electrons.</li></ul>` },
+    { h: 'How do giant covalent structures form?', html: `
+      ${anim('giant3d', 'Build a giant covalent structure, step by step (drag to rotate)')}
+      <div class="key"><b>The big idea:</b> a giant covalent structure forms when <b>every atom keeps forming covalent bonds to more atoms</b>, so the bonding never stops. Billions of atoms end up joined in one continuous network. There are <b>no separate molecules</b>.</div>
+      <ol>
+        <li><b>Carbon needs 4 bonds.</b> Carbon is 2,4: it has 4 outer electrons and needs 4 more, so each carbon atom forms <b>4 covalent bonds</b> (4 shared pairs).</li>
+        <li><b>If the partners can only form 1 bond, the molecule stops.</b> Carbon + hydrogen: each H forms just one bond, so after 4 H atoms everything is full → a small, separate <b>CH₄ molecule</b> (simple molecular).</li>
+        <li><b>If the partners also need several bonds, it never stops.</b> Carbon + carbon: each carbon bonds to 4 other carbons, and each of those needs 3 more bonds, so they bond to even more carbons… in every direction → a <b>giant covalent lattice</b> (diamond).</li>
+        <li><b>The formula is a ratio, not a molecule.</b> In SiO₂ each Si bonds to 4 O and each O bonds to 2 Si, so there are twice as many O atoms as Si atoms → Si : O = 1 : 2.</li>
+      </ol>
+      <table class="tbl"><tr><th></th><th>Simple molecular (e.g. CH₄, H₂O, CO₂)</th><th>Giant covalent (diamond, graphite, SiO₂)</th></tr>
+      <tr><td>Particles</td><td>small, separate molecules</td><td>one huge network of atoms</td></tr>
+      <tr><td>What holds it together</td><td>strong bonds <i>inside</i> molecules, <b>weak forces between</b> molecules</td><td><b>strong covalent bonds throughout</b></td></tr>
+      <tr><td>Melting means…</td><td>overcoming weak intermolecular forces</td><td>breaking many strong covalent bonds</td></tr>
+      <tr><td>Melting point</td><td><b>low</b> (often a gas or liquid)</td><td><b>very high</b> (solids)</td></tr>
+      <tr><td>Conducts?</td><td>no</td><td>no, except graphite (delocalised electrons)</td></tr>
+      <tr><td>Hardness</td><td>soft if solid</td><td>very hard (diamond, SiO₂); graphite is soft (layers slide)</td></tr></table>
+      <div class="tip"><b>Exam answer (3 marks): “Explain why diamond has a very high melting point.”</b><br>Diamond has a <b>giant covalent structure</b> ✓. Each carbon atom forms <b>4 strong covalent bonds</b> ✓. <b>Many</b> strong bonds must be <b>broken</b>, which needs a lot of energy ✓.<br><span class="dim">Common mistake: do NOT write “strong intermolecular forces” — diamond has no molecules!</span></div>
+      <div class="tip"><b>Exam answer (3 marks): “Explain why graphite conducts electricity but diamond does not.”</b><br>In graphite each carbon forms only <b>3 bonds</b> ✓, so <b>one outer electron per atom is delocalised</b> ✓ and these electrons can <b>move through the structure</b> ✓. In diamond all 4 outer electrons are used in bonds, so there are no free electrons.</div>` },
     { h: 'Giant covalent structures', html: `
       ${anim('giant', 'Diamond, graphite and silicon(IV) oxide')}
       <table class="tbl"><tr><th></th><th>Diamond</th><th>Graphite</th></tr>
@@ -136,6 +154,10 @@ const TOPICS = [
   ],
   quiz: [
     { q: 'How many shared pairs of electrons are in a molecule of methane, CH₄?', o: ['1', '2', '4', '8'], a: 2, e: 'Carbon (4 outer electrons) shares one pair with each of 4 hydrogen atoms → 4 single covalent bonds.' },
+    { q: 'Why does carbon form a giant structure with other carbon atoms but a small molecule (CH₄) with hydrogen?', o: ['Hydrogen atoms are bigger than carbon atoms.', 'Each carbon needs 4 bonds, so carbon partners keep bonding to more carbons; H can form only 1 bond, so the molecule is finished after 4 H.', 'Carbon forms ionic bonds with carbon.', 'Methane is a metal.'], a: 1, e: 'Every carbon atom needs 4 bonds, so a carbon–carbon network keeps growing in every direction. Each H can only form one bond, so after four H atoms nothing more can join — a small molecule.' },
+    { q: 'What has to be broken to melt diamond?', o: ['weak intermolecular forces', 'strong covalent bonds', 'ionic bonds', 'metallic bonds'], a: 1, e: 'Diamond has no separate molecules. Melting it means breaking many strong covalent bonds — so its melting point is very high.' },
+    { q: 'In silicon(IV) oxide, how many bonds does each oxygen atom form?', o: ['1', '2', '3', '4'], a: 1, e: 'Each O bonds to 2 Si atoms and each Si bonds to 4 O atoms, giving the ratio SiO₂.' },
+    { q: 'Which statement about a giant covalent structure is correct?', o: ['It is made of small separate molecules.', 'It has a low melting point.', 'All its atoms are joined by covalent bonds in a continuous network.', 'It always conducts electricity.'], a: 2, e: 'A giant covalent structure is one continuous network of covalently bonded atoms — no separate molecules.' },
     { q: 'How many lone (non-bonding) pairs are on the oxygen atom in water?', o: ['0', '1', '2', '4'], a: 2, e: 'O has 6 outer electrons; 2 are used in bonds with H, leaving 4 electrons = 2 lone pairs.' },
     { q: 'Why does water have a low boiling point compared with sodium chloride?', o: ['Covalent bonds are weak', 'Only weak forces between molecules must be overcome', 'Water has ions', 'Water is a mixture'], a: 1, e: 'Boiling water separates molecules from each other — only weak intermolecular forces break, not the strong O–H covalent bonds.' },
     { q: 'Why is graphite used as a lubricant?', o: ['It has a high melting point', 'It conducts electricity', 'Its layers can slide over each other', 'Each carbon forms 4 bonds'], a: 2, e: 'The forces between graphite layers are weak, so the layers slide easily.' },
