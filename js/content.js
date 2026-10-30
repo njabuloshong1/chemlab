@@ -143,6 +143,30 @@ const TOPICS = [
       <tr><td>Hardness</td><td>soft if solid</td><td>very hard (diamond, SiO₂); graphite is soft (layers slide)</td></tr></table>
       <div class="tip"><b>Exam answer (3 marks): “Explain why diamond has a very high melting point.”</b><br>Diamond has a <b>giant covalent structure</b> ✓. Each carbon atom forms <b>4 strong covalent bonds</b> ✓. <b>Many</b> strong bonds must be <b>broken</b>, which needs a lot of energy ✓.<br><span class="dim">Common mistake: do NOT write “strong intermolecular forces” — diamond has no molecules!</span></div>
       <div class="tip"><b>Exam answer (3 marks): “Explain why graphite conducts electricity but diamond does not.”</b><br>In graphite each carbon forms only <b>3 bonds</b> ✓, so <b>one outer electron per atom is delocalised</b> ✓ and these electrons can <b>move through the structure</b> ✓. In diamond all 4 outer electrons are used in bonds, so there are no free electrons.</div>` },
+    { h: 'Why does graphite conduct electricity but diamond does not?', html: `
+      ${carbonFigures()}
+      <div class="key"><b>The key idea: it all depends on what happens to carbon’s 4 outer electrons.</b><br>
+      <b>Diamond:</b> each C forms <b>4</b> bonds → <b>all 4</b> outer electrons are used in bonds → <b>no free electrons</b> → does <b>not</b> conduct.<br>
+      <b>Graphite:</b> each C forms only <b>3</b> bonds → <b>1</b> outer electron per atom is left over and <b>delocalised</b> → these electrons <b>move</b> through the layers → <b>conducts</b>.</div>
+      ${anim('conduct', 'Follow the electrons: diamond vs graphite (with battery and bulb)')}
+      <p><b>Remember what electricity needs:</b> a substance conducts only if it has <b>charged particles that can move</b>, either <b>electrons</b> (metals, graphite) or <b>ions</b> (molten or dissolved ionic compounds). Diamond has neither: its electrons are all held in bonds, and it has no ions.</p>
+      <table class="tbl"><tr><th></th><th>Diamond</th><th>Graphite</th></tr>
+      <tr><td>Bonds per carbon atom</td><td>4</td><td>3</td></tr>
+      <tr><td>Shape</td><td>3D network (tetrahedral)</td><td>flat hexagonal layers</td></tr>
+      <tr><td>Outer electrons used in bonds</td><td>all 4</td><td>3</td></tr>
+      <tr><td>Delocalised electrons?</td><td>none</td><td>1 per carbon atom</td></tr>
+      <tr><td>Conducts electricity?</td><td><b>no</b></td><td><b>yes</b> (along the layers)</td></tr>
+      <tr><td>Hardness</td><td>very hard (rigid 3D network)</td><td>soft and slippery (weak forces between layers)</td></tr>
+      <tr><td>Uses</td><td>cutting tools, drill tips</td><td>electrodes, lubricant, pencil “lead”</td></tr></table>
+      <div class="tip"><b>Model answer (4 marks):</b> In graphite each carbon atom is covalently bonded to <b>3</b> other atoms ✓, so each atom has <b>one delocalised electron</b> ✓ that is <b>free to move through the structure</b> and carry charge ✓. In diamond each carbon atom forms <b>4</b> bonds, so <b>all outer electrons are used in bonding</b> and there are no delocalised electrons ✓.<br>
+      <span class="dim">Avoid: “graphite has free ions” ✗ (graphite has no ions), or “diamond's electrons are fixed because it is hard” ✗ (hardness is not the reason).</span></div>` },
+    { h: 'How is diamond made from carbon? (for interest)', html: `
+      ${anim('makediamond', 'Turning graphite into diamond')}
+      <p>Diamond and graphite are both pure <b>carbon</b>. They contain the same atoms, bonded differently. Graphite can be turned into diamond by forcing its layers together until every carbon atom forms a <b>4th bond</b>.</p>
+      <ul><li><b>In nature:</b> about 150 km underground, carbon is under enormous <b>pressure</b> (about 50 000 atmospheres) and <b>temperature</b> (about 1200 °C) for millions of years. Volcanic eruptions carry the diamonds up towards the surface.</li>
+      <li><b>In factories (high pressure, high temperature):</b> graphite is squeezed in a giant press at about 1500 °C with a metal catalyst.</li>
+      <li><b>In factories (chemical vapour deposition):</b> a carbon-containing gas such as methane is broken up, and carbon atoms build up layer by layer on a tiny diamond seed.</li></ul>
+      <p class="dim">The details of making diamond are not in the IGCSE syllabus, but they show why diamond and graphite have such different properties even though both are just carbon.</p>` },
     { h: 'Giant covalent structures', html: `
       ${anim('giant', 'Diamond, graphite and silicon(IV) oxide')}
       <table class="tbl"><tr><th></th><th>Diamond</th><th>Graphite</th></tr>
@@ -155,6 +179,10 @@ const TOPICS = [
   quiz: [
     { q: 'How many shared pairs of electrons are in a molecule of methane, CH₄?', o: ['1', '2', '4', '8'], a: 2, e: 'Carbon (4 outer electrons) shares one pair with each of 4 hydrogen atoms → 4 single covalent bonds.' },
     { q: 'Why does carbon form a giant structure with other carbon atoms but a small molecule (CH₄) with hydrogen?', o: ['Hydrogen atoms are bigger than carbon atoms.', 'Each carbon needs 4 bonds, so carbon partners keep bonding to more carbons; H can form only 1 bond, so the molecule is finished after 4 H.', 'Carbon forms ionic bonds with carbon.', 'Methane is a metal.'], a: 1, e: 'Every carbon atom needs 4 bonds, so a carbon–carbon network keeps growing in every direction. Each H can only form one bond, so after four H atoms nothing more can join — a small molecule.' },
+    { q: 'How many of each carbon atom’s outer electrons are used in covalent bonds in diamond?', o: ['1', '2', '3', '4'], a: 3, e: 'Each carbon in diamond forms 4 covalent bonds, so all 4 outer electrons are used — none are free to move, so diamond does not conduct.' },
+    { q: 'In graphite, what happens to the 4th outer electron of each carbon atom?', o: ['It forms an ion.', 'It is delocalised and can move along the layers.', 'It bonds to the layer above.', 'It is lost to the air.'], a: 1, e: 'Each carbon uses 3 electrons in bonds; the 4th is delocalised and free to move, which is why graphite conducts.' },
+    { q: 'Which statement explains why diamond does NOT conduct electricity?', o: ['It is very hard.', 'It contains ions that cannot move.', 'All its outer electrons are used in covalent bonds, so there are no delocalised electrons.', 'It has weak forces between layers.'], a: 2, e: 'Diamond has no ions at all, and every outer electron is held in a bond, so no charged particles can move.' },
+    { q: 'What is the formula of diamond?', o: ['C', 'C₂', 'C₄', 'C₆₀'], a: 0, e: 'Diamond is the element carbon in a giant structure, so its formula is just C (graphite is also C).' },
     { q: 'What has to be broken to melt diamond?', o: ['weak intermolecular forces', 'strong covalent bonds', 'ionic bonds', 'metallic bonds'], a: 1, e: 'Diamond has no separate molecules. Melting it means breaking many strong covalent bonds — so its melting point is very high.' },
     { q: 'In silicon(IV) oxide, how many bonds does each oxygen atom form?', o: ['1', '2', '3', '4'], a: 1, e: 'Each O bonds to 2 Si atoms and each Si bonds to 4 O atoms, giving the ratio SiO₂.' },
     { q: 'Which statement about a giant covalent structure is correct?', o: ['It is made of small separate molecules.', 'It has a low melting point.', 'All its atoms are joined by covalent bonds in a continuous network.', 'It always conducts electricity.'], a: 2, e: 'A giant covalent structure is one continuous network of covalently bonded atoms — no separate molecules.' },
